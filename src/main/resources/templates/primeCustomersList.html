@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head">>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="fragments/header :: header"></header>
+<div class="container">
+    &nbsp;
+    <div>
+        <a class="btn btn-outline-dark float-right" href="#" th:href="@{/addCustomer}" role="button"> ADD Customer </a>
+        &nbsp;
+    </div>
+    &nbsp;
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer Number</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Date of Birth</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="customerLength ==0"> No Customers data available</tr>
+        <tr th:each="customer , itr : ${customers}">
+            <th scope="row" th:text="${itr.count}"></th>
+            <td th:text="${customer.customerNumber}"></td>
+            <td th:text="${customer.fullName}"></td>
+            <td th:text="${customer.phoneNumber}"></td>
+            <td th:text="${customer.dateOfBirth}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
